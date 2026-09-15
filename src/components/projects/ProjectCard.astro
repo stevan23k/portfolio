@@ -1,0 +1,88 @@
+---
+import { Card } from "@/components/ui/card";
+import { Image } from "astro:assets";
+import { Globe } from "lucide-react";
+import type { ImageMetadata } from "astro:assets";
+import { FaGithub } from "react-icons/fa";
+
+interface Props {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  link?: string;
+  githubLink?: string;
+  technologies?: string[];
+}
+
+const {
+  title,
+  description,
+  image,
+  link,
+  githubLink,
+  technologies = [],
+} = Astro.props;
+
+const techImages = import.meta.glob<{ default: string }>(
+  "../../assets/*.{svg,png}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
+
+const techImageSrc = (name: string) =>
+  Object.entries(techImages).find(
+    ([key]) => key.endsWith(`/${name}.svg`) || key.endsWith(`/${name}.png`),
+  )?.[1];
+---
+
+<div>
+  <Card className="h-120 w-100 pt-0">
+    <div class="w-full overflow-hidden">
+      <Image
+        src={image}
+        width={400}
+        height={300}
+        alt={title}
+        class="w-full h-52 object-cover"
+      />
+    </div>
+    <div class="flex flex-row justify-between items-center px-4">
+      <span class="font-medium text-2xl">{title}</span>
+      <div class="flex flex-row gap-6">
+        {githubLink ? (
+          <a href={githubLink} target="_blank" rel="noreferrer">
+            <FaGithub
+              className="fill-zinc-500 hover:fill-accent-foreground"
+              size={24}
+            />
+          </a>
+        ) : null}
+
+        {link ? (
+          <>
+            <a href={link} target="_blank" rel="noreferrer">
+              <Globe className="stroke-zinc-500 hover:stroke-zinc-800 dark:hover:stroke-zinc-200" />
+            </a>
+          </>
+        ) : null}
+      </div>
+    </div>
+    <div class="text-sm text-muted-foreground px-4">{description}</div>
+    {technologies.length > 0 ? (
+      <ul class="flex flex-row flex-wrap gap-3 mt-4 px-4 pb-4">
+        {technologies.map((tech) => {
+          const src = techImageSrc(tech);
+          return (
+            <li class="flex items-center gap-2 rounded-md bg-muted/50 px-2.5 py-1.5">
+              {src ? <img src={src} alt={tech} class="h-4 w-4" /> : null}
+              <span class="text-xs capitalize">{tech}</span>
+            </li>
+          );
+        })}
+      </ul>
+    ) : null}
+  </Card>
+</div>

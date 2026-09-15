@@ -1,0 +1,120 @@
+---
+import { Image } from "astro:assets";
+import pfp from "../assets/pfp-cat.jpeg";
+import { Badge } from "@/components/ui/badge";
+import { Clock, MapPin, Mail, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { FaGithub } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { SocialTooltip } from "./SocialTooltip";
+---
+
+<section class="mt-20">
+  <!-- name -->
+  <div class="w-full flex flex-row gap-40 items-center mb-10">
+    <div class="h-30 w-auto flex justify-center flex-row gap-10">
+      <div class="h-30 w-30">
+        <Image
+          src={pfp}
+          alt={"hi"}
+          width={200}
+          height={200}
+          class="rounded-2xl"
+        />
+      </div>
+      <div class="flex flex-col justify-center gap-4">
+        <div class="flex flex-row items-center gap-4">
+          <span class="text-4xl font-bold">Esteban van-strahlen</span>
+          <Badge variant={"secondary"}>
+            <div class="h-2 w-2 bg-green-500 rounded-4xl shadow-2xl ring-green-300" />
+            <span>Open For Work</span>
+          </Badge>
+        </div>
+        <span class="text-2xl text-muted-foreground font-light">
+          Full-Stack Developer{" "}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="w-full flex gap-2 flex-col mb-8">
+    <!-- Lugar -->
+    <div class="flex flex-row gap-4">
+      <Badge variant={"secondary"}>
+        <MapPin size={24} />
+      </Badge>
+      <span>Barranquilla, Colombia</span>
+    </div>
+    <!-- Hora -->
+    <div class="flex flex-row gap-4">
+      <Badge variant={"secondary"}>
+        <Clock size={24} />
+      </Badge>
+      <div class="flex gap-2">
+        <span id="hora"></span>
+        <span class="text-muted-foreground">// UTC-5</span>
+      </div>
+    </div>
+    <!-- Email -->
+    <div class="flex flex-row gap-4">
+      <Badge variant={"secondary"}>
+        <Mail size={24} />
+      </Badge>
+      <a
+        href="mailto:evanstrah12@gmail.com"
+        class="hover:scale-110 duration-120"
+      >
+        Enviar mensaje
+      </a>
+    </div>
+  </div>
+
+  <!-- Links -->
+  <div class="flex flex-row mb-8 gap-4 items-center">
+    <div class="flex gap-4">
+      <Button>
+        <FileText /> Currículum
+      </Button>
+      <Button variant="outline">
+        <Mail />
+        Contactar
+      </Button>
+    </div>
+    <Separator orientation="vertical" />
+    <div class="gap-2 flex flex-row">
+      <Button variant="outline">
+        <FaGithub />
+      </Button>
+      <Button variant="outline">
+        <FaXTwitter />
+      </Button>
+    </div>
+  </div>
+
+  <!-- remumen -->
+  <div class="text-xl text-muted-foreground mb-8">
+    Desarrollador Full Stack junior especializado en TypeScript, React, Next.js
+    y NestJS, construcción de aplicaciones web escalables con arquitecturas
+    limpias y buenas prácticas (APIs REST, JWT). Apasionado por la integración
+    de herramientas de IA y la experiencia de usuario. Actualmente cursando
+    Ingeniería de Sistemas en la Universidad de la Costa, con un portafolio de
+    proyectos reales que demuestran iniciativa y dominio técnico.
+  </div>
+</section>
+
+<script>
+  const tz = "America/Bogota"; // tu zona
+  const fmt = new Intl.DateTimeFormat("es", {
+    timeZone: tz,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  function actualizar() {
+    document.getElementById("hora").textContent = fmt.format(new Date());
+  }
+  actualizar();
+  setInterval(actualizar, 1000);
+</script>

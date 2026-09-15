@@ -1,0 +1,39 @@
+---
+import SkillsComponents from "@/src/components/skills/SkillsComponent.astro";
+---
+
+<div class="mb-8">
+  <span class="text-xl font-light">Skills</span>
+  <div>
+    <SkillsComponents
+      title="Frontend"
+      items={[
+        "typescript",
+        "javascript",
+        "react",
+        "next",
+        "vite",
+        "tailwind",
+        "astro",
+        "html",
+        "css",
+      ]}
+    />
+    <SkillsComponents
+      title="Backend"
+      items={["node", "nestjs", "redis", "python"]}
+    />
+    <SkillsComponents
+      title="Bases de datos"
+      items={["postgresql", "mongodb", "prisma"]}
+    />
+    <SkillsComponents
+      title="DevOps y Nube"
+      items={["docker", "git", "github", "nginx", "aws"]}
+    />
+    <SkillsComponents
+      title="Diseño"
+      items={["lenis", "gsap", "figma", "css", "tailwind"]}
+    />
+  </div>
+</div>

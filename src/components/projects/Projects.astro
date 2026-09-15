@@ -1,0 +1,29 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import page1 from "@/src/assets/page1.png";
+import headphones from "@/src/assets/headphones.png";
+---
+
+<div class="flex gap-4 flex-col">
+  <div>
+    <span class="font-light text-xl">Proyectos</span>
+  </div>
+  <div class="grid gap-4 md:grid-cols-2">
+    <ProjectCard
+      title="Prototipo de tienda"
+      description="Prototipo de tienda, animaciones y productos."
+      image={page1}
+      link="https://tienda-prueba-gules.vercel.app"
+      githubLink="https://github.com/stevan23k/tienda_prueba"
+      technologies={["astro", "tailwind", "gsap"]}
+    />
+    <ProjectCard
+      title="Página de presentación de un producto"
+      description="Práctica de animación con GSAP y objetos 3D, implementando Three.js."
+      image={headphones}
+      link="https://headphones-henna.vercel.app/"
+      githubLink="https://github.com/stevan23k/headphones"
+      technologies={["next", "gsap", "threejs", "lenis", "css"]}
+    />
+  </div>
+</div>

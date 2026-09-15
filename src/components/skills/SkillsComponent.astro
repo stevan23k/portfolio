@@ -1,0 +1,45 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+interface Props {
+  title?: string;
+  items: string[];
+}
+
+const { title = "Skills", items = [] } = Astro.props;
+
+const images = import.meta.glob<{ default: string }>(
+  "../../assets/*.{svg,png}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
+
+const imageSrc = (name: string) =>
+  Object.entries(images).find(
+    ([key]) => key.endsWith(`/${name}.svg`) || key.endsWith(`/${name}.png`),
+  )?.[1];
+---
+
+<div class="mt-4">
+  <Card>
+    <CardHeader>
+      <CardTitle>{title}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <ul class="flex flex-row flex-wrap gap-8">
+        {items.map((item) => {
+          const src = imageSrc(item);
+          return (
+            <li class="flex gap-3 border rounded-xl px-2 py-1 dark:hover:bg-gray-800 hover:bg-gray-300 cursor-default">
+              {src ? <img src={src} alt={item} class="h-5 w-5" /> : null}
+              <span class="capitalize">{item}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </CardContent>
+  </Card>
+</div>

@@ -1,0 +1,49 @@
+---
+import { ModeToggle } from "./ModeToggle";
+---
+
+<div class="fixed top-0 inset-x-0 z-50 mix-blend-difference">
+  <div class="h-15 py-6">
+    <div class="mx-auto max-w-250 w-full px-10 flex flex-row justify-between items-center">
+      <div>
+        <span class="text-2xl font-bold cursor-pointer transition-colors duration-300 text-white">
+          Esteban
+        </span>
+      </div>
+      <div class="flex flex-row gap-8">
+        <div class="flex items-center">
+          <ul class="text-white flex flex-row items-center gap-4">
+            <li>Sobre mi</li>
+            <li>Proyectos</li>
+            <li>Contacto</li>
+          </ul>
+        </div>
+        <ModeToggle client:load />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+  const isDark = getThemePreference() === "dark";
+  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+  if (typeof localStorage !== "undefined") {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  }
+</script>
