@@ -69,6 +69,9 @@ importers:
       prettier-plugin-astro:
         specifier: ^1.0.0
         version: 1.0.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(prettier@3.9.6)
+      sharp:
+        specifier: ^0.35.4
+        version: 0.35.4
 
 packages:
 
@@ -3500,8 +3503,7 @@ snapshots:
     dependencies:
       hono: 4.13.7
 
-  '@img/colour@1.1.0':
-    optional: true
+  '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.35.4':
     optionalDependencies:
@@ -5406,7 +5408,6 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.4
       '@img/sharp-win32-ia32': 0.35.4
       '@img/sharp-win32-x64': 0.35.4
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
