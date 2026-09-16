@@ -1,24 +1,34 @@
 ---
 import { ModeToggle } from "./ModeToggle";
+import { MobileMenu } from "./MobileMenu";
 ---
 
 <div class="fixed top-0 inset-x-0 z-50 mix-blend-difference">
   <div class="h-15 py-6">
-    <div class="mx-auto max-w-250 w-full px-10 flex flex-row justify-between items-center">
+    <div class="mx-auto max-w-250 w-full px-4 sm:px-10 flex flex-row justify-between items-center gap-4">
       <div>
         <span class="text-2xl font-bold cursor-pointer transition-colors duration-300 text-white">
           Esteban
         </span>
       </div>
-      <div class="flex flex-row gap-8">
-        <div class="flex items-center">
+      <div class="flex flex-row gap-4 items-center">
+        <nav class="hidden md:flex items-center">
           <ul class="text-white flex flex-row items-center gap-4">
-            <li>Sobre mi</li>
-            <li>Proyectos</li>
-            <li>Contacto</li>
+            <li>
+              <a href="#sobre-mi">Sobre mi</a>
+            </li>
+            <li>
+              <a href="#proyectos">Proyectos</a>
+            </li>
+            <li>
+              <a href="#contact">Contacto</a>
+            </li>
           </ul>
-        </div>
+        </nav>
         <ModeToggle client:load />
+        <div class="md:hidden">
+          <MobileMenu client:load />
+        </div>
       </div>
     </div>
   </div>

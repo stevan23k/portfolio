@@ -1,0 +1,27 @@
+---
+import Image from "astro/components/Image.astro";
+import cat from "@/src/assets/cat.png";
+import catDark from "@/src/assets/cat-dark.png";
+---
+
+<footer class="flex justify-center items-center h-screen px-6">
+  <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center">
+    <div class="shrink-0">
+      <Image
+        src={cat}
+        height={300}
+        width={300}
+        alt={"gato"}
+        class="w-32 sm:w-48 lg:w-72 h-auto dark:hidden"
+      />
+      <Image
+        src={catDark}
+        height={300}
+        width={300}
+        alt={"gato"}
+        class="w-32 sm:w-48 lg:w-72 h-auto hidden dark:block"
+      />
+    </div>
+    <span class="text-[96px] sm:text-[140px] lg:text-[200px] leading-none">Esteban</span>
+  </div>
+</footer>

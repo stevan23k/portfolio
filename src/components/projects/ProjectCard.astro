@@ -39,7 +39,7 @@ const techImageSrc = (name: string) =>
 ---
 
 <div>
-  <Card className="h-120 w-100 pt-0">
+  <Card className="w-full h-auto md:h-120 pt-0">
     <div class="w-full overflow-hidden">
       <Image
         src={image}
@@ -50,7 +50,7 @@ const techImageSrc = (name: string) =>
       />
     </div>
     <div class="flex flex-row justify-between items-center px-4">
-      <span class="font-medium text-2xl">{title}</span>
+      <span class="font-medium text-xl sm:text-2xl">{title}</span>
       <div class="flex flex-row gap-6">
         {githubLink ? (
           <a href={githubLink} target="_blank" rel="noreferrer">

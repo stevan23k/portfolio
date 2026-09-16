@@ -3,36 +3,39 @@ import { Image } from "astro:assets";
 import pfp from "../assets/pfp-cat.jpeg";
 import { Badge } from "@/components/ui/badge";
 import { Clock, MapPin, Mail, FileText } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import cv from "../assets/esteban van-strahlen.pdf";
 import { FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SocialTooltip } from "./SocialTooltip";
 ---
 
-<section class="mt-20">
+<section id="sobre-mi" class="mt-24 md:mt-20">
   <!-- name -->
-  <div class="w-full flex flex-row gap-40 items-center mb-10">
-    <div class="h-30 w-auto flex justify-center flex-row gap-10">
-      <div class="h-30 w-30">
+  <div class="w-full mb-20 flex flex-col md:flex-row gap-6 md:gap-40 items-center md:items-start">
+    <div class="h-30 w-auto flex justify-center flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
+      <div class="h-30 w-30 shrink-0">
         <Image
           src={pfp}
           alt={"hi"}
           width={200}
           height={200}
-          class="rounded-2xl"
+          class="rounded-2xl w-24 h-24 sm:w-30 sm:h-30"
         />
       </div>
-      <div class="flex flex-col justify-center gap-4">
-        <div class="flex flex-row items-center gap-4">
-          <span class="text-4xl font-bold">Esteban van-strahlen</span>
-          <Badge variant={"secondary"}>
+      <div class="flex flex-col justify-center items-center sm:items-start gap-4">
+        <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+          <span class="text-3xl sm:text-4xl font-bold text-center sm:text-left">
+            Esteban van-strahlen
+          </span>
+          <Badge variant={"secondary"} class="shrink-0">
             <div class="h-2 w-2 bg-green-500 rounded-4xl shadow-2xl ring-green-300" />
             <span>Open For Work</span>
           </Badge>
         </div>
-        <span class="text-2xl text-muted-foreground font-light">
-          Full-Stack Developer{" "}
+        <span class="text-xl sm:text-2xl text-muted-foreground font-light">
+          Full-Stack Developer
         </span>
       </div>
     </div>
@@ -72,29 +75,41 @@ import { SocialTooltip } from "./SocialTooltip";
   </div>
 
   <!-- Links -->
-  <div class="flex flex-row mb-8 gap-4 items-center">
-    <div class="flex gap-4">
-      <Button>
+  <div class="flex flex-row flex-wrap mb-8 gap-4 items-center">
+    <div class="flex gap-4 flex-wrap">
+      <a href={cv} download class={buttonVariants({ variant: "default" })}>
         <FileText /> Currículum
-      </Button>
-      <Button variant="outline">
+      </a>
+      <a href="#contact" class={buttonVariants({ variant: "outline" })}>
         <Mail />
         Contactar
-      </Button>
+      </a>
     </div>
     <Separator orientation="vertical" />
     <div class="gap-2 flex flex-row">
-      <Button variant="outline">
+      <a
+        href="https://github.com/stevan23k"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="GitHub"
+        class={buttonVariants({ variant: "outline", size: "icon" })}
+      >
         <FaGithub />
-      </Button>
-      <Button variant="outline">
+      </a>
+      <a
+        href="https://x.com/stevan23k"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="X"
+        class={buttonVariants({ variant: "outline", size: "icon" })}
+      >
         <FaXTwitter />
-      </Button>
+      </a>
     </div>
   </div>
 
   <!-- remumen -->
-  <div class="text-xl text-muted-foreground mb-8">
+  <div class="text-base sm:text-xl text-muted-foreground mb-8">
     Desarrollador Full Stack junior especializado en TypeScript, React, Next.js
     y NestJS, construcción de aplicaciones web escalables con arquitecturas
     limpias y buenas prácticas (APIs REST, JWT). Apasionado por la integración

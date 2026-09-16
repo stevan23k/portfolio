@@ -23,13 +23,13 @@ const imageSrc = (name: string) =>
   )?.[1];
 ---
 
-<div class="mt-4">
-  <Card>
+<div class="h-full">
+  <Card className="h-full">
     <CardHeader>
       <CardTitle>{title}</CardTitle>
     </CardHeader>
     <CardContent>
-      <ul class="flex flex-row flex-wrap gap-8">
+      <ul class="flex flex-row flex-wrap gap-3 sm:gap-8">
         {items.map((item) => {
           const src = imageSrc(item);
           return (
