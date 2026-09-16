@@ -29,7 +29,7 @@ import { SocialTooltip } from "./SocialTooltip";
           <span class="text-3xl sm:text-4xl font-bold text-center sm:text-left">
             Esteban van-strahlen
           </span>
-          <Badge variant={"secondary"} class="shrink-0">
+          <Badge variant={"secondary"}>
             <div class="h-2 w-2 bg-green-500 rounded-4xl shadow-2xl ring-green-300" />
             <span>Open For Work</span>
           </Badge>
@@ -128,7 +128,11 @@ import { SocialTooltip } from "./SocialTooltip";
   });
 
   function actualizar() {
-    document.getElementById("hora").textContent = fmt.format(new Date());
+    if (!document.getElementById("hora")) {
+      return;
+    } else {
+      document.getElementById("hora").textContent = fmt.format(new Date());
+    }
   }
   actualizar();
   setInterval(actualizar, 1000);
