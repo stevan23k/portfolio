@@ -20,7 +20,7 @@ import Contact from "../components/Contact.astro";
   import Lenis from "lenis";
   import { gsap } from "gsap";
 
-  const lenis = new Lenis({ lerp: 0.12 });
+  const lenis = new Lenis({ lerp: 0.1 });
 
   //get scroll value
   lenis.on("scroll", (e) => {
@@ -110,4 +110,5 @@ import Contact from "../components/Contact.astro";
     <Contact />
     <Footer />
   </div>
+  <div class="fixed bottom-0 bg-background/80 backdrop-blur-3xl w-full h-42 [mask-image:linear-gradient(to_bottom,transparent_10%,black_90%)]"></div>
 </Layout>
