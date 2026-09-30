@@ -2,6 +2,7 @@
 import ProjectCard from "./ProjectCard.astro";
 import page1 from "@/src/assets/page1.png";
 import headphones from "@/src/assets/headphones.png";
+import mapWeb from "@/src/assets/mapWeb.png";
 ---
 
 <div id="proyectos" class="flex gap-4 flex-col pt-12">
@@ -9,6 +10,20 @@ import headphones from "@/src/assets/headphones.png";
     <span class="font-light text-xl">Proyectos</span>
   </div>
   <div class="grid gap-4 md:grid-cols-2">
+    <ProjectCard
+      title="mapp"
+      description="El proyecto consiste en el desarrollo de una plataforma web de mapa interactivo que permite a los usuarios visualizar, crear y gestionar eventos geolocalizados en distintas ciudades. La aplicación integra funcionalidades de navegación y participación, ofreciendo una experiencia dinámica centrada en la ubicación."
+      image={mapWeb}
+      githubLink="https://github.com/stevan23k/map.git"
+      technologies={[
+        "next",
+        "nestjs",
+        "figma",
+        "postgresql",
+        "zustand",
+        "socket",
+      ]}
+    />
     <ProjectCard
       title="Prototipo de tienda"
       description="Prototipo de tienda, animaciones y productos."
